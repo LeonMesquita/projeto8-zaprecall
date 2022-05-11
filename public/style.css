@@ -1,29 +1,60 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Recursive&family=Righteous&display=swap');
 body {
-    background-color: #F86B6B;
+    background-color: #E5E5E5;
 }
 
-.initial-screen{
+.main-container{
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    background-color: #F86B6B;
     width: 375px;
     margin: auto;
+
+
 }
+
+.hidden {
+    display:none;
+}
+
+.initial-screen, .questions-screen{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 
 .initial-screen img {
     width: 136px;
     height: 161px;
 }
 
-.initial-screen h1 {
+
+.questions-screen  img {
+    width: 52px;
+    height: 60px;
+    margin-right: 20px;
+
+}
+
+.initial-screen h1, .questions-screen h1  {
     color: #FFFFFF;
     font-size: 36px;
     font-family: 'Righteous', cursive;
     margin-top: 13px;
+}
+
+.title{
+    margin-bottom: 50px;
+}
+
+.questions-screen div{
+    display: flex;
 }
 
 .start-button{
@@ -42,4 +73,53 @@ body {
 .start-button:hover{
     cursor: pointer;
     background: lightgray;
+}
+
+
+.question-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    height: 65px; 
+    background: #FFFFFF;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 25px;
+
+}
+
+.question-container img {
+    width: 20px;
+    height: 23px;
+}
+
+.question-container span {
+    font-size: 16px;
+    font-family: 'Recursive', sans-serif;
+    margin-left: 15px;
+    color: #333333;
+    font-weight: 700;
+}
+
+.question-container:hover{
+    cursor: pointer;
+    background-color: lightgray;
+}
+
+.bottom-bar {
+    background-color: #FFFFFF;
+    position: fixed;
+    bottom: 0;
+    width: 375px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.bottom-bar div{
+    margin-top: 24px;
+    margin-bottom: 24px;
 }
