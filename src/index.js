@@ -1,14 +1,11 @@
 import ReactDOM from 'react-dom';
-import BottomBar from './components/BottomBar';
-import InitialScreen from "./components/InitialScreen";
-import QuestionsScreen from './components/QuestionsScreen';
+import AppInit from './components/AppInit';
 
 function AppBody(){
-    // <InitialScreen />
     return(
         <div className='main-container'>
-           <QuestionsScreen />
-           <BottomBar />
+           <AppInit />
+       
         </ div>
     );
 }
