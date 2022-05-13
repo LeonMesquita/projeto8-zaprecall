@@ -9,10 +9,14 @@ export default function AppInit(){
     const [screen, setScreen] = React.useState('InitialScreen');
                 <InitialScreen />
                 return(
-                    <div className='main-container'>
+                    <>
+                      <div className='main-container'>
                       <QuestionsScreen />
-                      <BottomBar />
                     </ div>
+                    <BottomBar />
+
+                    </>
+
             );
   
 

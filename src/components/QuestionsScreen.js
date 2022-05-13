@@ -47,7 +47,8 @@ export default function QuestionsScreen(){
 
             </div>
             
-            {deck1.map((card, index) => <Question questionNumber={index+1} key={index} questionText={card.questionTitle}/>
+            {deck1.map((card, index) => <Question questionNumber={index+1} key={index}
+            questionText={card.questionTitle} answer={card.questionAnswer}/>
         )}
         
         </div>
@@ -55,14 +56,12 @@ export default function QuestionsScreen(){
 }
 
 
-/*
 
-*/
 function Question(props){
     const [open, setOpen] = React.useState(false);
 
     return(
-       open ? <QuestionCard questionText={props.questionText}/> :
+       open ? <QuestionCard questionText={props.questionText} answer={props.answer}/> :
         <button className="question-container"   onClick={() => setOpen(true)} >
             <span>Pergunta {props.questionNumber}</span>
             <img  src="images/play.svg" alt=""/>
