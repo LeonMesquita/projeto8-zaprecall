@@ -55,7 +55,7 @@ body {
 }
 
 .title{
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .questions-screen div{
@@ -133,12 +133,15 @@ body {
 
 .question-card, .back-card {
     background: #FFFFD5;
-    height: 131px;
     width: 299px;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
     position: relative;
 
+}
+
+.question-card{
+    height: 131px;
 }
 
 .back-card{
@@ -174,6 +177,7 @@ body {
     justify-content: space-between;
     margin-left: 10px;
     margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 
