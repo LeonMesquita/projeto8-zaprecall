@@ -10,14 +10,8 @@ export default function AppInit(){
                 <InitialScreen />
                 return(
                     <div className='main-container'>
-                        {
-                            screen === 'InitialScreen' ?
-                            <InitialScreen setScreen={setScreen}/> :
-                            <>
-                                <QuestionsScreen />
-                                <BottomBar />
-                            </>
-                        }     
+                      <QuestionsScreen />
+                      <BottomBar />
                     </ div>
             );
   
@@ -26,5 +20,12 @@ export default function AppInit(){
 
 /*
 
-  
+      {
+                            screen === 'InitialScreen' ?
+                            <InitialScreen setScreen={setScreen}/> :
+                            <>
+                                <QuestionsScreen />
+                                <BottomBar />
+                            </>
+                        }   
 */
