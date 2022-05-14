@@ -1,9 +1,7 @@
-export default function BottomBar(){
+export default function BottomBar(props){
     return(
         <div className="bottom-bar">
-            <div>
-            <span>0/4 CONCLUÍDOS</span>
-            </div>
+          {props.children}
         </div>
     );
 }

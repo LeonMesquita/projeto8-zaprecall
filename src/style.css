@@ -5,18 +5,16 @@ body {
 }
 * {
     box-sizing: border-box;
+
 }
 
 .main-container{
-  
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     background-color: #F86B6B;
     width: 375px;
     margin: auto;
-    margin-bottom: 50px;
+    margin-bottom: 70px;
 
 
 
@@ -30,7 +28,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
 
@@ -116,18 +113,17 @@ body {
 
 .bottom-bar {
     background-color: #FFFFFF;
-    position: fixed;
-    bottom: 0;
+   position: fixed;
+   bottom: 0;
     width: 375px;
-    display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
+
 }
 
-.bottom-bar div{
-    margin-top: 24px;
-    margin-bottom: 24px;
+.bottom-bar span{
+    padding-top: 20px;
 }
 
 
@@ -207,4 +203,17 @@ body {
 .green-button{
     background: #2FBE34;
 
+}
+
+.check-icons{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.check-icons img {
+    width: 23px;
+    height: 23px;
+    margin-right: 5px;
 }

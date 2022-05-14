@@ -1,6 +1,8 @@
 import QuestionCard from "./QuestionCard";
 import React from 'react';
+import BottomBar from "./BottomBar";
 export default function QuestionsScreen(){
+
 
     const deck1 = [
         {
@@ -37,34 +39,50 @@ export default function QuestionsScreen(){
         },
         
     ]
+    const [finished, setFinished] = React.useState(0);
 
-
+    const [listOfCheck, setListOfCheck] = React.useState([]);
     return(
         <div className="questions-screen"> 
             <div className="title">
                 <img  src="images/logo.svg" alt=""/>
                 <h1>ZapRecall</h1>
-
             </div>
             
             {deck1.map((card, index) => <Question questionNumber={index+1} key={index}
-            questionText={card.questionTitle} answer={card.questionAnswer}/>
+            questionText={card.questionTitle} answer={card.questionAnswer}
+            setList={setListOfCheck} listOfCheck={listOfCheck} setCont={setFinished} cont={finished}
+            />
         )}
+                    
+        <BottomBar>
+            <span>{finished}/{deck1.length} CONCLUÍDOS</span> 
+            <div className="check-icons">
+                {listOfCheck.length !== 0 ? 
+                    listOfCheck.map((check) => check)
+                :
+                    null
+                }
+            </div>   
+           
+        </BottomBar>
+
         
         </div>
     );
 }
 
 
-
 function Question(props){
     const [open, setOpen] = React.useState(false);
-
     return(
-       open ? <QuestionCard questionText={props.questionText} answer={props.answer}/> :
-        <button className="question-container"   onClick={() => setOpen(true)} >
-            <span>Pergunta {props.questionNumber}</span>
-            <img  src="images/play.svg" alt=""/>
-        </button>
+       open ?
+            <QuestionCard questionText={props.questionText} answer={props.answer}
+            setList={props.setList} listOfCheck={props.listOfCheck} setCont={props.setCont} cont={props.cont}/>
+       :
+            <button className="question-container"   onClick={() => setOpen(true)} >
+                <span>Pergunta {props.questionNumber}</span>
+                <img  src="images/play.svg" alt=""/>
+            </button>
     );
 }
