@@ -9,11 +9,19 @@ export default function AppInit(){
     const [screen, setScreen] = React.useState('InitialScreen');
                 return(
                
-                      <div className='main-container'>
-                    
-                      <QuestionsScreen />
+                    <>
+                            {
+                            screen === 'InitialScreen' ?
+                            <InitialScreen setScreen={setScreen}/> :
 
-                    </ div>
+                            <div className='main-container'>
+                                <QuestionsScreen />
+
+                            </div>
+                        
+                        }   
+                    </>
+            
 
 
             );

@@ -44,20 +44,20 @@ function Button(props){
         const newList = [...list];
         if (buttonClass === "red-button"){
             newList.push(
-                <img src="images/wrong.svg" alt=""/>
+                "images/wrong.svg"
             )
             props.setFlashIcon("images/wrong.svg");
         }
         else if (buttonClass === "green-button"){
             newList.push(
-                <img src="images/correct.svg" alt=""/>
+                "images/correct.svg"
             )
             props.setFlashIcon("images/correct.svg");
 
         }
         else {
             newList.push(
-                <img src="images/almost.svg" alt=""/>
+                "images/almost.svg"
             )
             props.setFlashIcon("images/almost.svg");
           

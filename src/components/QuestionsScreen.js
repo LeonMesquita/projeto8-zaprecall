@@ -37,11 +37,41 @@ export default function QuestionsScreen(){
             questionTitle: "Usamos estado (state) para __",
             questionAnswer: "dizer para o React quais informações quando atualizadas devem renderizar a tela novamente"
         },
-        
     ]
     const [finished, setFinished] = React.useState(0);
 
     const [listOfCheck, setListOfCheck] = React.useState([]);
+
+
+
+    function checkAnswers(){
+        let result = "Parabéns!";
+        let message = "Você não esqueceu de nenhum flashcard!";
+        let emoji = "images/party.svg";
+        for (let cont = 0; cont < listOfCheck.length; cont++){
+            if (listOfCheck[cont] === "images/wrong.svg"){
+                result = "Puts..."
+                emoji = "images/sad.svg"
+                message = "Ainda faltam alguns... Mas não desanime!"
+                break;
+            }  
+        }
+
+        return(
+        <>
+            <div className="finished-zap">
+                <img  src={emoji} alt=""/>
+                <p>{result}</p>
+             </div>
+            <span>{message}</span>
+       </>
+
+        );
+
+    }
+
+
+
     return(
         <div className="questions-screen"> 
             <div className="title">
@@ -56,13 +86,8 @@ export default function QuestionsScreen(){
         )}
                     
         <BottomBar>
-            {finished === deck1.length ? <>
-                <div className="finished-zap">
-                    <img  src="images/party.svg" alt=""/>
-                    <p>Parabéns!</p>
-                </div>
-                <span>Você não esqueceu de nenhum flashcard!</span>
-            </>
+            {finished === deck1.length ?
+                checkAnswers()
             :
             null
             }
@@ -70,7 +95,7 @@ export default function QuestionsScreen(){
             <span>{finished}/{deck1.length} CONCLUÍDOS</span> 
             <div className="check-icons">
                 {listOfCheck.length !== 0 ? 
-                    listOfCheck.map((check) => check)
+                    listOfCheck.map((check) =>  <img src={check} alt=""/>)
                 :
                     null
                 }
@@ -87,6 +112,7 @@ export default function QuestionsScreen(){
         
         </div>
     );
+
 }
 
 
@@ -134,3 +160,10 @@ function Question(props){
 
     );
 }
+
+
+/*
+
+        
+
+*/
