@@ -98,12 +98,13 @@ body {
     height: 23px;
 }
 
-.question-container span {
+.question-title, .answered-question {
     font-size: 16px;
     font-family: 'Recursive', sans-serif;
     margin-left: 15px;
-    color: #333333;
     font-weight: 700;
+    color: #333333;
+
 }
 
 .question-container:hover{
@@ -124,6 +125,8 @@ body {
 
 .bottom-bar span{
     padding-top: 20px;
+    font-family: 'Recursive', sans-serif;
+
 }
 
 
@@ -216,4 +219,53 @@ body {
     width: 23px;
     height: 23px;
     margin-right: 5px;
+}
+
+.answered-question{
+    text-decoration-line: line-through;
+}
+
+.wrong-question{
+    color: #FF3030;
+}
+
+.correct-question{
+    color: #2FBE34;
+}
+
+.almost-correct{
+    color: #FF922E;
+}
+
+.finished-zap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.finished-zap img{
+    width: 23px;
+    height: 23px;
+    font-weight: 700;
+}
+
+.finished-zap p{
+    font-family: 'Recursive', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.reset-button{
+    background: #FB6B6B;
+    border: none;
+    height: 32px;
+    width: 167px;
+    font-size: 14px;
+    font-family: 'Recursive', sans-serif;
+    color: #FFFFFF;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+
 }

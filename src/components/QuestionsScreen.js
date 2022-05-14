@@ -56,6 +56,17 @@ export default function QuestionsScreen(){
         )}
                     
         <BottomBar>
+            {finished === deck1.length ? <>
+                <div className="finished-zap">
+                    <img  src="images/party.svg" alt=""/>
+                    <p>Parabéns!</p>
+                </div>
+                <span>Você não esqueceu de nenhum flashcard!</span>
+            </>
+            :
+            null
+            }
+
             <span>{finished}/{deck1.length} CONCLUÍDOS</span> 
             <div className="check-icons">
                 {listOfCheck.length !== 0 ? 
@@ -64,6 +75,12 @@ export default function QuestionsScreen(){
                     null
                 }
             </div>   
+
+            {finished === deck1.length ? 
+            <button className="reset-button">REINICIAR RECALL </button>
+            :
+            null
+            }
            
         </BottomBar>
 
@@ -75,14 +92,45 @@ export default function QuestionsScreen(){
 
 function Question(props){
     const [open, setOpen] = React.useState(false);
-    return(
-       open ?
-            <QuestionCard questionText={props.questionText} answer={props.answer}
-            setList={props.setList} listOfCheck={props.listOfCheck} setCont={props.setCont} cont={props.cont}/>
-       :
-            <button className="question-container"   onClick={() => setOpen(true)} >
-                <span>Pergunta {props.questionNumber}</span>
-                <img  src="images/play.svg" alt=""/>
+    const [answered, setAnswered] = React.useState(false);
+    const [flashIcon, setFlashIcon] = React.useState("images/play.svg");
+
+    function questionClass(){
+        if(flashIcon === "images/correct.svg")
+            return "correct-question"
+        else if(flashIcon === "images/wrong.svg")
+            return "wrong-question"
+        else return "almost-correct"
+    }
+
+    function questionContainer(){
+        const questClass = questionClass();
+        if(answered === false){
+            return(
+                <button className="question-container"   onClick={() => setOpen(true)} >
+                <span className={"question-title"}>Pergunta {props.questionNumber}</span>
+                <img  src={flashIcon} alt=""/>
             </button>
+            )
+        }
+        else{
+            return(
+                <button className="question-container">
+                <span className={`answered-question ${questClass}`}>Pergunta {props.questionNumber}</span>
+                <img  src={flashIcon} alt=""/>
+            </button>
+            )
+        }
+    }
+
+    return(
+       !open?
+            questionContainer()
+       :
+       <QuestionCard questionText={props.questionText} answer={props.answer}
+       setList={props.setList} listOfCheck={props.listOfCheck} setCont={props.setCont}
+       cont={props.cont} setAnswered={setAnswered} setOpen={setOpen} setFlashIcon={setFlashIcon}
+       />
+
     );
 }
