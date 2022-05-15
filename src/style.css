@@ -69,11 +69,9 @@ body {
     margin-top: 30px;
 }
 
-.start-button{
-    color: #D70900;
+.initial-screen button{
     font-size: 18px;
     font-family: 'Recursive', sans-serif;
-    background: #FFFFFF;
     border: 1px solid #D70900;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
@@ -82,7 +80,20 @@ body {
     margin-top: 30px;
 }
 
-.start-button:hover{
+.inactive-button{
+    background: #E8E8E8;
+    color: #C0C0C0;
+
+}
+
+.active-button{
+    background: #FFFFFF;
+        color: #D70900;
+
+
+}
+
+.active-button:hover{
     cursor: pointer;
     background: lightgray;
 }
@@ -133,12 +144,14 @@ body {
 }
 
 .bottom-bar span{
-    padding-top: 20px;
+    margin-top: 20px;
     font-family: 'Recursive', sans-serif;
 
 }
 
-
+.margin{
+    margin-bottom: 45px;
+}
 .question-card, .back-card {
     background: #FFFFD5;
     width: 299px;
@@ -277,4 +290,14 @@ body {
     margin-top: 10px;
     cursor: pointer;
 
+}
+
+
+.meta-form{
+    background-color: #FFFFFF;
+    height: 43px;
+    width: 246px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 36px;
 }

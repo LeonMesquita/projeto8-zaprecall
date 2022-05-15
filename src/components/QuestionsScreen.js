@@ -1,7 +1,8 @@
 import QuestionCard from "./QuestionCard";
 import React from 'react';
 import BottomBar from "./BottomBar";
-export default function QuestionsScreen(){
+import AppInit from "./AppInit";
+export default function QuestionsScreen(props){
 
 
     const deck1 = [
@@ -12,7 +13,7 @@ export default function QuestionsScreen(){
         {
             questionTitle: "O React é_",
             questionAnswer: "uma biblioteca JavaScript para construção de interfaces"
-        },
+        }   ,
         {
             questionTitle: "Componentes devem iniciar com_",
             questionAnswer: "letra maiúscula"
@@ -36,42 +37,16 @@ export default function QuestionsScreen(){
         {
             questionTitle: "Usamos estado (state) para __",
             questionAnswer: "dizer para o React quais informações quando atualizadas devem renderizar a tela novamente"
-        },
+        },     
+
+
     ]
     const [finished, setFinished] = React.useState(0);
 
     const [listOfCheck, setListOfCheck] = React.useState([]);
 
 
-
-    function checkAnswers(){
-        let result = "Parabéns!";
-        let message = "Você não esqueceu de nenhum flashcard!";
-        let emoji = "images/party.svg";
-        for (let cont = 0; cont < listOfCheck.length; cont++){
-            if (listOfCheck[cont] === "images/wrong.svg"){
-                result = "Puts..."
-                emoji = "images/sad.svg"
-                message = "Ainda faltam alguns... Mas não desanime!"
-                break;
-            }  
-        }
-
-        return(
-        <>
-            <div className="finished-zap">
-                <img  src={emoji} alt=""/>
-                <p>{result}</p>
-             </div>
-            <span>{message}</span>
-       </>
-
-        );
-
-    }
-
-
-
+    let qtdZap = 0;
     return(
         <div className="questions-screen"> 
             <div className="title">
@@ -93,16 +68,18 @@ export default function QuestionsScreen(){
             }
 
             <span>{finished}/{deck1.length} CONCLUÍDOS</span> 
-            <div className="check-icons">
+            
                 {listOfCheck.length !== 0 ? 
-                    listOfCheck.map((check) =>  <img src={check} alt=""/>)
+                <div className="check-icons">
+                    {listOfCheck.map((check) =>  <img src={check} alt=""/>)}
+                    </div>   
+ 
                 :
-                    null
+                    <div className="margin"></div>
                 }
-            </div>   
 
             {finished === deck1.length ? 
-            <button className="reset-button">REINICIAR RECALL </button>
+            <button className="reset-button" onClick={<ResetApp />}>REINICIAR RECALL </button>
             :
             null
             }
@@ -113,6 +90,50 @@ export default function QuestionsScreen(){
         </div>
     );
 
+
+
+    function checkAnswers(){
+        let result = "Parabéns!";
+        let message = "Você não esqueceu de nenhum flashcard!";
+        let emoji = "images/party.svg";
+        
+        for (let cont = 0; cont < listOfCheck.length; cont++){
+            if (listOfCheck[cont] === "images/wrong.svg"){
+                result = "Puts..."
+                emoji = "images/sad.svg"
+                message = "Ainda faltam alguns... Mas não desanime!"
+                break;
+            }
+            else if (listOfCheck[cont] === "images/correct.svg") 
+                qtdZap++;
+        }
+
+        if(qtdZap < props.zapMeta){
+            result = "Puts..."
+            emoji = "images/sad.svg"
+            message = "Ainda faltam alguns... Mas não desanime!"
+        }
+        return(
+        <>
+            <div className="finished-zap">
+                <img  src={emoji} alt=""/>
+                <p>{result}</p>
+             </div>
+            <span>{message}</span>
+       </>
+
+        );
+
+    }
+
+
+
+
+    function ResetApp(){
+        return(
+            <AppInit />
+        );
+    }
 }
 
 
@@ -120,6 +141,20 @@ function Question(props){
     const [open, setOpen] = React.useState(false);
     const [answered, setAnswered] = React.useState(false);
     const [flashIcon, setFlashIcon] = React.useState("images/play.svg");
+
+
+    return(
+       !open?
+            questionContainer()
+       :
+       <QuestionCard questionText={props.questionText} answer={props.answer}
+       setList={props.setList} listOfCheck={props.listOfCheck} setCont={props.setCont}
+       cont={props.cont} setAnswered={setAnswered} setOpen={setOpen} setFlashIcon={setFlashIcon}
+       />
+
+    );
+
+
 
     function questionClass(){
         if(flashIcon === "images/correct.svg")
@@ -148,22 +183,35 @@ function Question(props){
             )
         }
     }
-
-    return(
-       !open?
-            questionContainer()
-       :
-       <QuestionCard questionText={props.questionText} answer={props.answer}
-       setList={props.setList} listOfCheck={props.listOfCheck} setCont={props.setCont}
-       cont={props.cont} setAnswered={setAnswered} setOpen={setOpen} setFlashIcon={setFlashIcon}
-       />
-
-    );
 }
 
 
 /*
 
-        
+   ,
+        {
+            questionTitle: "Componentes devem iniciar com_",
+            questionAnswer: "letra maiúscula"
+        },
+        {
+            questionTitle: "Podemos colocar __ dentro do JSX",
+            questionAnswer: "expressões"
+        },
+        {
+            questionTitle: "O ReactDOM nos ajuda __",
+            questionAnswer: "interagindo com a DOM para colocar componentes React na mesma"
+        },
+        {
+            questionTitle: "Usamos o npm para __",
+            questionAnswer: "gerenciar os pacotes necessários e suas dependências"
+        },
+        {
+            questionTitle: "Usamos props para __",
+            questionAnswer: "passar diferentes informações para componentes"
+        },
+        {
+            questionTitle: "Usamos estado (state) para __",
+            questionAnswer: "dizer para o React quais informações quando atualizadas devem renderizar a tela novamente"
+        },     
 
 */

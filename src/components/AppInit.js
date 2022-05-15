@@ -3,40 +3,7 @@ import InitialScreen from "./InitialScreen";
 import QuestionsScreen from "./QuestionsScreen";
 import React from 'react';
 export default function AppInit(){
-    // <QuestionsScreen />
-    //                <BottomBar />
-
-    const [screen, setScreen] = React.useState('InitialScreen');
-                return(
-               
-                    <>
-                            {
-                            screen === 'InitialScreen' ?
-                            <InitialScreen setScreen={setScreen}/> :
-
-                            <div className='main-container'>
-                                <QuestionsScreen />
-
-                            </div>
-                        
-                        }   
-                    </>
-            
-
-
-            );
-  
-
+        return( 
+            <InitialScreen/>
+        );
 }
-
-/*
-
-      {
-                            screen === 'InitialScreen' ?
-                            <InitialScreen setScreen={setScreen}/> :
-                            <>
-                                <QuestionsScreen />
-                                <BottomBar />
-                            </>
-                        }   
-*/
