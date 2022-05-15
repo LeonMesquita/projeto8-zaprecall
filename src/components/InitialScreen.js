@@ -18,7 +18,6 @@ export default function InitialScreen(){
             <button className="inactive-button">Iniciar Recall!</button>
             :
             <button className="active-button" onClick={validateInput}>Iniciar Recall!</button>
-            
             }
         </div>
         :

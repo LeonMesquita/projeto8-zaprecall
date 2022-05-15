@@ -2,6 +2,7 @@ import QuestionCard from "./QuestionCard";
 import React from 'react';
 import BottomBar from "./BottomBar";
 import AppInit from "./AppInit";
+import InitialScreen from "./InitialScreen";
 export default function QuestionsScreen(props){
 
 
@@ -13,7 +14,7 @@ export default function QuestionsScreen(props){
         {
             questionTitle: "O React é_",
             questionAnswer: "uma biblioteca JavaScript para construção de interfaces"
-        }   ,
+        }  ,
         {
             questionTitle: "Componentes devem iniciar com_",
             questionAnswer: "letra maiúscula"
@@ -38,6 +39,7 @@ export default function QuestionsScreen(props){
             questionTitle: "Usamos estado (state) para __",
             questionAnswer: "dizer para o React quais informações quando atualizadas devem renderizar a tela novamente"
         },     
+   
 
 
     ]
@@ -45,9 +47,11 @@ export default function QuestionsScreen(props){
 
     const [listOfCheck, setListOfCheck] = React.useState([]);
 
+    const [currentScreen, setCurrentScreen] = React.useState('QuestionsScreen');
 
     let qtdZap = 0;
     return(
+        currentScreen === "QuestionsScreen" ?
         <div className="questions-screen"> 
             <div className="title">
                 <img  src="images/logo.svg" alt=""/>
@@ -79,7 +83,7 @@ export default function QuestionsScreen(props){
                 }
 
             {finished === deck1.length ? 
-            <button className="reset-button" onClick={<ResetApp />}>REINICIAR RECALL </button>
+            <button className="reset-button" onClick={ResetApp}>REINICIAR RECALL </button>
             :
             null
             }
@@ -88,6 +92,8 @@ export default function QuestionsScreen(props){
 
         
         </div>
+        :
+        <InitialScreen />
     );
 
 
@@ -130,9 +136,7 @@ export default function QuestionsScreen(props){
 
 
     function ResetApp(){
-        return(
-            <AppInit />
-        );
+        setCurrentScreen("InitialScreen");
     }
 }
 
@@ -188,30 +192,5 @@ function Question(props){
 
 /*
 
-   ,
-        {
-            questionTitle: "Componentes devem iniciar com_",
-            questionAnswer: "letra maiúscula"
-        },
-        {
-            questionTitle: "Podemos colocar __ dentro do JSX",
-            questionAnswer: "expressões"
-        },
-        {
-            questionTitle: "O ReactDOM nos ajuda __",
-            questionAnswer: "interagindo com a DOM para colocar componentes React na mesma"
-        },
-        {
-            questionTitle: "Usamos o npm para __",
-            questionAnswer: "gerenciar os pacotes necessários e suas dependências"
-        },
-        {
-            questionTitle: "Usamos props para __",
-            questionAnswer: "passar diferentes informações para componentes"
-        },
-        {
-            questionTitle: "Usamos estado (state) para __",
-            questionAnswer: "dizer para o React quais informações quando atualizadas devem renderizar a tela novamente"
-        },     
-
+ 
 */
