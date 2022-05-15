@@ -1,48 +1,13 @@
 import QuestionCard from "./QuestionCard";
 import React from 'react';
 import BottomBar from "./BottomBar";
-import AppInit from "./AppInit";
 import InitialScreen from "./InitialScreen";
+
+
+
 export default function QuestionsScreen(props){
-
-
-    const deck1 = [
-        {
-            questionTitle: "O que é JSX?",
-            questionAnswer: "JSX é uma sintaxe para escrever HTML dentro do JS"
-        },
-        {
-            questionTitle: "O React é_",
-            questionAnswer: "uma biblioteca JavaScript para construção de interfaces"
-        }  ,
-        {
-            questionTitle: "Componentes devem iniciar com_",
-            questionAnswer: "letra maiúscula"
-        },
-        {
-            questionTitle: "Podemos colocar __ dentro do JSX",
-            questionAnswer: "expressões"
-        },
-        {
-            questionTitle: "O ReactDOM nos ajuda __",
-            questionAnswer: "interagindo com a DOM para colocar componentes React na mesma"
-        },
-        {
-            questionTitle: "Usamos o npm para __",
-            questionAnswer: "gerenciar os pacotes necessários e suas dependências"
-        },
-        {
-            questionTitle: "Usamos props para __",
-            questionAnswer: "passar diferentes informações para componentes"
-        },
-        {
-            questionTitle: "Usamos estado (state) para __",
-            questionAnswer: "dizer para o React quais informações quando atualizadas devem renderizar a tela novamente"
-        },     
-   
-
-
-    ]
+    
+    const choosedDeck = props.selectedDeck;
     const [finished, setFinished] = React.useState(0);
 
     const [listOfCheck, setListOfCheck] = React.useState([]);
@@ -58,31 +23,31 @@ export default function QuestionsScreen(props){
                 <h1>ZapRecall</h1>
             </div>
             
-            {deck1.map((card, index) => <Question questionNumber={index+1} key={index}
+            {choosedDeck.map((card, index) => <Question questionNumber={index+1} key={index}
             questionText={card.questionTitle} answer={card.questionAnswer}
             setList={setListOfCheck} listOfCheck={listOfCheck} setCont={setFinished} cont={finished}
             />
         )}
                     
         <BottomBar>
-            {finished === deck1.length ?
+            {finished === choosedDeck.length ?
                 checkAnswers()
             :
             null
             }
 
-            <span>{finished}/{deck1.length} CONCLUÍDOS</span> 
+            <span>{finished}/{choosedDeck.length} CONCLUÍDOS</span> 
             
                 {listOfCheck.length !== 0 ? 
                 <div className="check-icons">
-                    {listOfCheck.map((check) =>  <img src={check} alt=""/>)}
+                    {listOfCheck.map((check, index) =>  <img src={check} alt="" key={index}/>)}
                     </div>   
  
                 :
                     <div className="margin"></div>
                 }
 
-            {finished === deck1.length ? 
+            {finished === choosedDeck.length ? 
             <button className="reset-button" onClick={ResetApp}>REINICIAR RECALL </button>
             :
             null

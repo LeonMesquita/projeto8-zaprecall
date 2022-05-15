@@ -72,7 +72,6 @@ body {
 .initial-screen button{
     font-size: 18px;
     font-family: 'Recursive', sans-serif;
-    
     border-radius: 5px;
     width: 246px;
     height: 54px;
@@ -314,4 +313,22 @@ body {
   input:focus{
     box-shadow: 0 0 0 0;
     outline: 0;
+}
+
+
+.select-deck{
+    width: 246px;
+    height: 43px;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    border: none;
+    margin-top: 18px;
+    color: #ADADAD;
+    font-family:'Roboto', sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.select-deck:hover{
+    background-color: lightgray;
 }

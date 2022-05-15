@@ -23,7 +23,7 @@ export default function QuestionCard(props){
             <span>{props.answer}</span>
             <div className='buttons'>
                 {buttons.map(
-                    button => <Button color={button.color} text={button.text} setList={props.setList}
+                    (button, index) => <Button key={index} color={button.color} text={button.text} setList={props.setList}
                     listOfCheck={props.listOfCheck} setCont={props.setCont} cont={props.cont}
                     setAnswered={props.setAnswered} setOpen={props.setOpen} setFlashIcon={props.setFlashIcon}
                     />
