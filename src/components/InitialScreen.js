@@ -21,7 +21,7 @@ export default function InitialScreen(){
             ></input>
 
             <SelectDeck chooseDeck={chooseDeck}/>
-            {inputValue === "" ?
+            {inputValue === "" || selectedDeck.length === 0 ?
             <button className="inactive-button">Iniciar Recall!</button>
             :
             <button className="active-button" onClick={validateInput}>Iniciar Recall!</button>
@@ -57,7 +57,7 @@ function SelectDeck(props){
     }
     return(
         <select name='decks' className='select-deck' value={deck} onChange={item => chooseDeck(setDeck, item.target.value)}>
-            <option value="0">escolha um deck</option>
+            <option value="0">Escolha um deck</option>
             <option value="1">Deck 1</option>
             <option value="2">Deck 2</option>
         </select>

@@ -8,6 +8,7 @@ import InitialScreen from "./InitialScreen";
 export default function QuestionsScreen(props){
     
     const choosedDeck = props.selectedDeck;
+    choosedDeck.sort(shuffleList);
     const [finished, setFinished] = React.useState(0);
 
     const [listOfCheck, setListOfCheck] = React.useState([]);
@@ -102,6 +103,10 @@ export default function QuestionsScreen(props){
 
     function ResetApp(){
         setCurrentScreen("InitialScreen");
+    }
+
+    function shuffleList(){
+            return Math.random() - 0.5; 
     }
 }
 
