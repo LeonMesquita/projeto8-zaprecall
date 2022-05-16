@@ -176,6 +176,7 @@ body {
     font-family: 'Recursive', sans-serif;
     margin-left: 15px;
     margin-top: 18px;
+    margin-right: 7px;
 
     
 }
@@ -329,6 +330,3 @@ body {
     cursor: pointer;
 }
 
-.select-deck:hover{
-    background-color: lightgray;
-}

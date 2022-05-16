@@ -58,8 +58,8 @@ function SelectDeck(props){
     return(
         <select name='decks' className='select-deck' value={deck} onChange={item => chooseDeck(setDeck, item.target.value)}>
             <option value="0">Escolha um deck</option>
-            <option value="1">Deck 1</option>
-            <option value="2">Deck 2</option>
+            <option value="1">Deck 1 - React</option>
+            <option value="2">Deck 2 - Python</option>
         </select>
     )
 }
